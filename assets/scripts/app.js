@@ -11,9 +11,21 @@ const gameEvents = require('./games/events');
 
 $(() => {
   $('#other-auth-buttons').hide()
-  $('main').hide()
+  $('#game-board').hide();
+  $('#new-game').hide()
+  $('.game-space').hide()
+
+  // Auth event handlers
   $('#sign-up-form').on('submit', userEvents.onSignUp);
   $('#sign-in-form').on('submit', userEvents.onSignIn);
   $('#change-password-form').on('submit', userEvents.onChangePassword)
   $('#sign-out-form').on('submit', userEvents.onSignOut);
+
+  // Game event handlers
+  $('#new-game').on('click', gameEvents.onNewGame)
+
+  // Game board css
+  
+  // $('.game-space').css('height', width)
+  $(window).on('resize', gameEvents.onResize)
 })

@@ -1,13 +1,10 @@
 const api = require('./api')
-const store = require('./../store')
+let store = require('./../store')
+const utility = require('./../utility')
 
 const closeModalAndClearForms = () => {
     $('form').trigger('reset')
     $('.modal-close').trigger('click')
-}
-
-const changeDisplay = msg => {
-    $('h3', '#display').text(msg)
 }
 
 const onSignUpSuccess = formData => {
@@ -19,28 +16,29 @@ const onSignUpSuccess = formData => {
 const onSignInSuccess = res => {
     store.user = res.user
     closeModalAndClearForms()
-    changeDisplay(`${store.user.email} signed in.`)
-    $('#gameboard').show()
+    utility.changeDisplay(`${store.user.email} signed in. Please start game.`)
     $('#auth-buttons').hide()
     $('#other-auth-buttons').show()
+    $('#new-game').show()
 }
 
 const onChangePasswordSuccess = () => {
-    changeDisplay(`Password for ${store.user.email} changed.`)
+    utility.changeDisplay(`Password for ${store.user.email} changed.`)
     closeModalAndClearForms()
 }
 
 const onSignOutSuccess = () => {
-    changeDisplay(`${store.user.email} signed out. Sign in or sign up to play.`)
+    utility.changeDisplay(`${store.user.email} signed out. Sign in or sign up to play.`)
     closeModalAndClearForms()
-    $('#gameboard').hide()
-    $('#auth-buttons').hide()
-    $('#other-auth-buttons').show()
-    store.user = null
+    $('#game-board').hide(500, 'swing')
+    $('#auth-buttons').show()
+    $('#other-auth-buttons').hide()
+    $('#new-game').hide()
+    store = {}
 }
 
 const onError = err => {
-    changeDisplay(`Error: ${err.statusText}. Please try again.`)
+    utility.changeDisplay(`Error: ${err.statusText}. Please try again.`)
 }
 
 export {

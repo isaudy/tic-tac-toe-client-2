@@ -135,9 +135,9 @@
 
       <header class="jumbotron">
         <div class="container">
-          <div class="row">
+          <div class="row justify-content-center">
             <h1 class="col-12 col-md-8 text-center">Tic Tac Toe</h1>
-            <div id="auth-buttons" class="row col-md-4">
+            <div id="auth-buttons" class="row col-6 col-md-4 justify-content-center">
               <button id="sign-in-button" type="button" class="btn btn-primary col-md-6" data-toggle="modal" data-target="#sign-in-modal">
                 Sign in
               </button>
@@ -145,7 +145,7 @@
                 Sign Up
               </button>
             </div>
-            <div id="other-auth-buttons" class="row col-md-4">
+            <div id="other-auth-buttons" class="row col-6 col-md-4 justify-content-center">
               <button id="change-password-button" type="button" class="btn btn-primary col-md-6" data-toggle="modal" data-target="#change-password-modal">
                 Change Password
               </button>
@@ -159,24 +159,22 @@
       <div id="display" class="container">
         <div class="row">
           <h3 class="col-12 text-center">Sign up or sign in to play.</h3>
+          <button id="new-game" class="btn btn-success mx-auto">Start New Game</button>
         </div>
+        <br>
       </div>
-      <main class="main container">
-        <div id="gameboard">
-          <div class="row">
-            <span class="col-4 border-secondary "></span>
-            <span class="col-4 border-secondary "></span>
-            <span class="col-4 border-secondary "></span>
-          </div>
-          <div class="row">
-            <span class="col-4 border-secondary "></span>
-            <span class="col-4 border-secondary "></span>
-            <span class="col-4 border-secondary "></span>
-          </div>
-          <div class="row">
-            <span class="col-4 border-secondary "></span>
-            <span class="col-4 border-secondary "></span>
-            <span class="col-4 border-secondary "></span>
+      <main id="game-board" class="main container">
+        <div class="row justify-content-center">
+          <div class="row col-9 justify-content-center">
+            <div id="box0" class="col-4 border border-light game-space" data-cell-index='0'></div>
+            <div id="box1" class="col-4 border border-light game-space" data-cell-index='1'></div>
+            <div id="box2" class="col-4 border border-light game-space" data-cell-index='2'></div>
+            <div id="box3" class="col-4 border border-light game-space" data-cell-index='3'></div>
+            <div id="box4" class="col-4 border border-light game-space" data-cell-index='4'></div>
+            <div id="box5" class="col-4 border border-light game-space" data-cell-index='5'></div>
+            <div id="box6" class="col-4 border border-light game-space" data-cell-index='6'></div>
+            <div id="box7" class="col-4 border border-light game-space" data-cell-index='7'></div>
+            <div id="box8" class="col-4 border border-light game-space" data-cell-index='8'></div>
           </div>
         </div>
       </main>

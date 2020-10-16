@@ -1,6 +1,22 @@
 @import '~bootstrap/scss/bootstrap';
 
-span {
-    height: width;
-    background-color: white;
+.col-4 {
+    padding: 0;
+    color: white;
+    background-color:rgb(37, 37, 37);
+
+    &:hover {
+        background-color: rgb(228, 228, 228);
+        cursor: pointer;
+    }
+}
+
+.game-space {
+    font-size: 100%;
+    text-align: center;
+    line-height: 100%;
+}
+
+#new-game, #display {
+    font-size: 2.5vw;
 }
