@@ -23,6 +23,7 @@ $(() => {
 
   // Game event handlers
   $('#new-game').on('click', gameEvents.onNewGame)
+  $('#get-games').on('click', gameEvents.onGetGames)
 
   // Game board css
   

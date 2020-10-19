@@ -1,5 +1,5 @@
 const api = require('./api')
-let store = require('./../store')
+const store = require('./../store')
 const utility = require('./../utility')
 
 const closeModalAndClearForms = () => {
@@ -34,7 +34,6 @@ const onSignOutSuccess = () => {
     $('#auth-buttons').show()
     $('#other-auth-buttons').hide()
     $('#new-game').hide()
-    store = {}
 }
 
 const onError = err => {

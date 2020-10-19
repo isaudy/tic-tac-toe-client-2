@@ -3,8 +3,6 @@ const ui = require('./ui')
 const store = require('./../store')
 const utility = require('./../utility')
 
-let player = 'x'
-
 const onNewGame = e => {
     api.ajaxNewGame()
         .then(ui.onNewGameSuccess)
@@ -13,25 +11,38 @@ const onNewGame = e => {
 
 const onSpaceClicked = e => {
     $(e.target).off('click')
-    store.updateData.game.cell.index = $(e.target).data('cellIndex')
-    store.updateData.game.cell.value = player
-    store.updateData.game.over = utility.checkGame(player)
+    const updateGameData = store.updateData.game
+    store.player = store.player === 'x' ? 'o' : 'x'
+    updateGameData.cell.index = $(e.target).data('cell-index')
+    updateGameData.cell.value = store.player
+    store.game.cells[updateGameData.cell.index] = store.player
+    utility.checkGame(store.player)
 
-    
-    player = player === 'x' ? 'o' : 'x'
-    
     api.ajaxUpdateGame()
-    .then(res => ui.onUpdateGame(res, e.target))
+    .then(ui.onUpdateGameSuccess)
     .catch(ui.onError)
 }
 
-const onResize = e => {
+const onGetGames = () => {
+    api.ajaxGetGames()
+        .then(ui.onGetGamesSuccess)
+        .catch(ui.onError)
+}
+
+const onDeleteGame = e => {
+    api.ajaxDeleteGame($(e.target).data('id'))
+        .then(ui.onDeleteGameSuccess)
+        .catch(ui.onError)
+}
+
+const onResize = () => {
     utility.updateHeight()
 }
 
 export {
     onNewGame,
     onSpaceClicked,
-    onResize,
-    player
+    onGetGames,
+    onDeleteGame,
+    onResize
 }

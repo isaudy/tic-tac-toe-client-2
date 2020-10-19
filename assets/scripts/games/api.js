@@ -19,8 +19,25 @@ const ajaxUpdateGame = () => {
     })
 }
 
+const ajaxGetGames = () => {
+    return $.ajax({
+        method: "GET",
+        url: `${config}/games`,
+        headers: { Authorization: `Bearer ${store.user.token}` }
+    })
+}
+
+const ajaxDeleteGame = id => {
+    return $.ajax({
+        method: "DELETE",
+        url: `${config}/games/${id}`,
+        headers: { Authorization: `Bearer ${store.user.token}` }
+    })
+}
 
 export {
     ajaxNewGame,
-    ajaxUpdateGame
+    ajaxUpdateGame,
+    ajaxGetGames,
+    ajaxDeleteGame
 }

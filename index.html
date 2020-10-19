@@ -108,6 +108,7 @@
           </div>
         </div>
       </div>
+      <!-- Adapted from bootstrap docs -->
       <div id="sign-out-modal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -132,6 +133,31 @@
           </div>
         </div>
       </div>
+      <!-- Adapted from bootstrap docs -->
+      <div id="games-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+            <!-- Adapted from bootstrap docs -->
+              <div id="carouselControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                <div id="games-carousel" class="carousel-inner">
+                  <!-- Dynamic data goes here -->
+                </div>
+                <a class="carousel-control-prev" href="#carouselControls" role="button" data-interval="false" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselControls" role="button" data-interval="false" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+      </div>
 
       <header class="jumbotron">
         <div class="container">
@@ -146,12 +172,13 @@
               </button>
             </div>
             <div id="other-auth-buttons" class="row col-6 col-md-4 justify-content-center">
-              <button id="change-password-button" type="button" class="btn btn-primary col-md-6" data-toggle="modal" data-target="#change-password-modal">
+              <button id="change-password-button" type="button" class="btn btn-primary col-12 col-md-6" data-toggle="modal" data-target="#change-password-modal">
                 Change Password
               </button>
-              <button id="sign-out-button" type="button" class="btn btn-light col-md-6" data-toggle="modal" data-target="#sign-out-modal">
+              <button id="sign-out-button" type="button" class="btn btn-light col-12 col-md-6" data-toggle="modal" data-target="#sign-out-modal">
                 Sign Out
               </button>
+              <button id="get-games" type="button" class="btn btn-info col-12" data-toggle="modal" data-target="#games-modal">Get Previous Games</button>
             </div>
           </div>
         </div>
@@ -159,7 +186,6 @@
       <div id="display" class="container">
         <div class="row">
           <h3 class="col-12 text-center">Sign up or sign in to play.</h3>
-          <button id="new-game" class="btn btn-success mx-auto">Start New Game</button>
         </div>
         <br>
       </div>
@@ -178,5 +204,10 @@
           </div>
         </div>
       </main>
+      <br>
+      <div class="row">
+        <button id="new-game" class="btn btn-success mx-auto">Start New Game</button>
+      </div>
+      <br>
     </body>
 </html>

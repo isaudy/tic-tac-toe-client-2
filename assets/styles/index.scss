@@ -1,20 +1,46 @@
 @import '~bootstrap/scss/bootstrap';
 
-.col-4 {
+.game-space {
     padding: 0;
     color: white;
-    background-color:rgb(37, 37, 37);
+    background-color: #373737;
 
     &:hover {
-        background-color: rgb(228, 228, 228);
+        background-color: rgb(172, 172, 172);
         cursor: pointer;
     }
 }
 
-.game-space {
-    font-size: 100%;
+.dummy-game {
+    padding: 0;
+    color: white;
+    background-color: #373737;
+
+    &:hover {
+    background-color: #373737;
+    cursor: default;
+    }
+}
+
+.carousel-inner {
+    height: 700px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    color: #373737;
+}
+
+.game-space-display {
+    display: flex;
+    height: 100%;
+    padding: 0 0 50px 0;
+    margin: 0;
+    line-height: 0;
     text-align: center;
-    line-height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 150px;
 }
 
 #new-game, #display {
