@@ -4,6 +4,7 @@
     padding: 0;
     color: white;
     background-color: #373737;
+    font-size: 25vw;
 
     &:hover {
         background-color: rgb(172, 172, 172);
@@ -12,9 +13,11 @@
 }
 
 .dummy-game {
+    height: 135px;
     padding: 0;
     color: white;
     background-color: #373737;
+    font-size: 1000%;
 
     &:hover {
     background-color: #373737;
@@ -23,26 +26,37 @@
 }
 
 .carousel-inner {
-    height: 700px;
+    height: 500px;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-    color: #373737;
+.delete-game-btn {
+    margin-top: 20px;
 }
 
 .game-space-display {
     display: flex;
-    height: 100%;
-    padding: 0 0 50px 0;
+    padding: 0 0 12% 0;
     margin: 0;
     line-height: 0;
-    text-align: center;
     justify-content: center;
     align-items: center;
-    font-size: 150px;
 }
 
-#new-game, #display {
+// .carousel-control-prev-icon,
+// .carousel-control-next-icon {
+//   height: 100px;
+//   width: 100px;
+//   background-size: 100%, 100%;
+//   background-image: none;
+// }
+
+// .carousel-control-next-icon:after,
+// .carousel-control-prev-icon:after
+// {
+//   font-size: 55px;
+//   color: white;
+// }
+
+#new-game, #display h3 {
     font-size: 2.5vw;
 }

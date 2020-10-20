@@ -25,7 +25,6 @@ const onUpdateGameSuccess = (res) => {
     }
     if(res.game.over) {
         $('.game-space').off('click') 
-        utility.changeDisplay(`Player ${store.player} won!`)
     } else {
         store.game = res.game
         utility.changeDisplay(`Player ${store.player === 'x' ? 'o' : 'x'}'s turn.`)
@@ -57,6 +56,7 @@ const onGetGamesSuccess = res => {
     </div>
     `))
     $('.delete-game-btn').on('click', gameEvents.onDeleteGame)
+    // $('.dummy-game').css('height', $('.dummy-game').innerWidth())
 }
 
 const onDeleteGameSuccess = res => {

@@ -19,7 +19,7 @@ const checkGame = player => {
     ) {
         changeDisplay(`Player ${store.player} won!`)
         store.updateData.game.over = true
-    } else if (cells.every(cell => cell !== "")) {
+    } else if (cells.every(cell => cell)) {
         changeDisplay("It's a tie. Please start new game.")
         store.updateData.game.over = true;
     } else return
