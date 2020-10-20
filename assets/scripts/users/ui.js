@@ -1,13 +1,9 @@
 const api = require('./api')
-const store = require('./../store')
-const utility = require('./../utility')
-
-const closeModalAndClearForms = () => {
-    $('form').trigger('reset')
-    $('.modal-close').trigger('click')
-}
+const store = require('../store')
+const utility = require('../utility')
 
 const onSignUpSuccess = formData => {
+    utility.closeModalAndClearForms()
     api.ajaxSignIn(formData)
         .then(onSignInSuccess)
         .catch(onError)
@@ -15,7 +11,7 @@ const onSignUpSuccess = formData => {
 
 const onSignInSuccess = res => {
     store.user = res.user
-    closeModalAndClearForms()
+    utility.closeModalAndClearForms()
     utility.changeDisplay(`${store.user.email} signed in. Please start game.`)
     $('#auth-buttons').hide()
     $('#other-auth-buttons').show()
@@ -24,12 +20,12 @@ const onSignInSuccess = res => {
 
 const onChangePasswordSuccess = () => {
     utility.changeDisplay(`Password for ${store.user.email} changed.`)
-    closeModalAndClearForms()
+    utility.closeModalAndClearForms()
 }
 
 const onSignOutSuccess = () => {
     utility.changeDisplay(`${store.user.email} signed out. Sign in or sign up to play.`)
-    closeModalAndClearForms()
+    utility.closeModalAndClearForms()
     $('#game-board').hide(500, 'swing')
     $('#auth-buttons').show()
     $('#other-auth-buttons').hide()

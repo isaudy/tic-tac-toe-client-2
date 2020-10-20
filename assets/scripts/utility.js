@@ -30,9 +30,19 @@ const updateHeight = () => {
         $('.game-space').css('height', $('.game-space').innerWidth())
     });
 }
+const closeModalAndClearForms = () => {
+    $('form').trigger('reset')
+    $('.modal-close').trigger('click')
+}
+
+const populateModalBody = content => {
+    $('#modal-body').html(content)
+}
 
 export {
     changeDisplay,
     checkGame,
-    updateHeight
+    updateHeight,
+    closeModalAndClearForms,
+    populateModalBody
 }

@@ -4,7 +4,8 @@
     padding: 0;
     color: white;
     background-color: #373737;
-    font-size: 25vw;
+    font-size: 22vw;
+    overflow: hidden;
 
     &:hover {
         background-color: rgb(172, 172, 172);
@@ -41,21 +42,6 @@
     justify-content: center;
     align-items: center;
 }
-
-// .carousel-control-prev-icon,
-// .carousel-control-next-icon {
-//   height: 100px;
-//   width: 100px;
-//   background-size: 100%, 100%;
-//   background-image: none;
-// }
-
-// .carousel-control-next-icon:after,
-// .carousel-control-prev-icon:after
-// {
-//   font-size: 55px;
-//   color: white;
-// }
 
 #new-game, #display h3 {
     font-size: 2.5vw;

@@ -12,7 +12,8 @@ const store = {
           },
           over: false
         }
-  }
+  },
+  computerMode: true
 }
 
 module.exports = store

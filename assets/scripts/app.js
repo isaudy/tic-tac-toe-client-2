@@ -1,13 +1,7 @@
 'use strict'
 
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
-
-// use require without a reference to ensure a file is bundled
-// require('./example')
-
-const userEvents = require('./users/events');
 const gameEvents = require('./games/events');
+const modals = require('./modals')
 
 $(() => {
   $('#other-auth-buttons').hide()
@@ -15,15 +9,15 @@ $(() => {
   $('#new-game').hide()
   $('.game-space').hide()
 
-  // Auth event handlers
-  $('#sign-up-form').on('submit', userEvents.onSignUp);
-  $('#sign-in-form').on('submit', userEvents.onSignIn);
-  $('#change-password-form').on('submit', userEvents.onChangePassword)
-  $('#sign-out-form').on('submit', userEvents.onSignOut);
+  // Buttons for modals
+  $('#sign-up-button').on('click', modals.signUpModal)
+  $('#sign-in-button').on('click', modals.signInModal)  
+  $('#change-password-button').on('click', modals.changePasswordModal)  
+  $('#sign-out-button').on('click', modals.signOutModal)  
+  $('#get-games').on('click', modals.gamesModal)
 
   // Game event handlers
   $('#new-game').on('click', gameEvents.onNewGame)
-  $('#get-games').on('click', gameEvents.onGetGames)
 
   // Game board css
   
