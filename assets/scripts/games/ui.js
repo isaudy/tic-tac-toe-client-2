@@ -1,9 +1,14 @@
 const utility = require('./../utility')
 const store = require('./../store')
+const computer = require('./computer')
 const gameEvents = require('./events')
 
 const onNewGameSuccess = res => {
-    utility.changeDisplay(`New game started. Click on square to start. X goes first.`)
+    if (store.computerMode) {
+        utility.changeDisplay(`New computer game started. Player is X and goes first.`)
+    } else {
+        utility.changeDisplay(`New game started. Click on square to start. X goes first.`)
+    }
 
     $('#game-board').show()
     
@@ -16,8 +21,7 @@ const onNewGameSuccess = res => {
     store.game = res.game
 }
 
-const onUpdateGameSuccess = (res) => {
-    console.log(res);
+const onUpdateGameSuccess = res => {
     const cells = res.game.cells
     const gameBoard = $('.game-space')
     for(let i = 0; i < cells.length; i++) {
@@ -25,10 +29,44 @@ const onUpdateGameSuccess = (res) => {
     }
     if(res.game.over) {
         $('.game-space').off('click') 
+        store.isTie = false
     } else {
         store.game = res.game
-        utility.changeDisplay(`Player ${store.player === 'x' ? 'o' : 'x'}'s turn.`)
     }
+}
+const onPlayerUpdateSuccess = res => {
+    if (store.isTie) {
+        utility.changeDisplay("It's a tie. You may start new game.")
+    } else if (res.game.over) {
+        utility.changeDisplay("Player wins! You may start new game.")
+    } else {
+        utility.changeDisplay("Computer's turn")
+    }
+    onUpdateGameSuccess(res)
+    setTimeout(() => {
+        computer.computerPlay()
+    }, 1000)
+}
+const onComputerUpdateSuccess = res => {
+    if (store.isTie) {
+        utility.changeDisplay("It's a tie. You may start new game.")
+    } else if (res.game.over) {
+        utility.changeDisplay("Computer wins! You may start new game.")
+    } else {
+        utility.changeDisplay("Player's turn")
+    }
+    onUpdateGameSuccess(res)
+}
+
+const onOnePlayerUpdateSuccess = res => {
+    if (store.isTie) {
+        utility.changeDisplay("It's a tie. You may start new game.")
+    } else if (res.game.over) {
+        utility.changeDisplay(`Player ${store.player} wins! You may start new game.`)
+    } else {
+        utility.changeDisplay(`Player ${store.player === 'x' ? 'o' : 'x'}\'s turn`)
+    }
+    onUpdateGameSuccess(res)
 }
 
 const onGetGamesSuccess = res => {
@@ -56,10 +94,9 @@ const onGetGamesSuccess = res => {
     </div>
     `))
     $('.delete-game-btn').on('click', gameEvents.onDeleteGame)
-    // $('.dummy-game').css('height', $('.dummy-game').innerWidth())
 }
 
-const onDeleteGameSuccess = res => {
+const onDeleteGameSuccess = () => {
     gameEvents.onGetGames()
     utility.changeDisplay("Game deleted")
 }
@@ -70,7 +107,9 @@ const onError = err => {
 
 export {
     onNewGameSuccess,
-    onUpdateGameSuccess,
+    onOnePlayerUpdateSuccess,
+    onPlayerUpdateSuccess,
+    onComputerUpdateSuccess,
     onGetGamesSuccess,
     onDeleteGameSuccess,
     onError

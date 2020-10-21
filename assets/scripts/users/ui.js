@@ -15,7 +15,7 @@ const onSignInSuccess = res => {
     utility.changeDisplay(`${store.user.email} signed in. Please start game.`)
     $('#auth-buttons').hide()
     $('#other-auth-buttons').show()
-    $('#new-game').show()
+    $('#game-buttons').show()
 }
 
 const onChangePasswordSuccess = () => {
@@ -29,7 +29,7 @@ const onSignOutSuccess = () => {
     $('#game-board').hide(500, 'swing')
     $('#auth-buttons').show()
     $('#other-auth-buttons').hide()
-    $('#new-game').hide()
+    $('#game-buttons').hide()
 }
 
 const onError = err => {

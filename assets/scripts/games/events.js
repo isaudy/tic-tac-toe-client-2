@@ -3,7 +3,15 @@ const ui = require('./ui')
 const store = require('./../store')
 const utility = require('./../utility')
 
-const onNewGame = e => {
+const onNewPlayerGame = () => {
+    store.computerMode = false
+    api.ajaxNewGame()
+        .then(ui.onNewGameSuccess)
+        .catch(ui.onError)
+}
+
+const onNewComputerGame = () => {
+    store.computerMode = true
     api.ajaxNewGame()
         .then(ui.onNewGameSuccess)
         .catch(ui.onError)
@@ -12,14 +20,13 @@ const onNewGame = e => {
 const onSpaceClicked = e => {
     $(e.target).off('click')
     const updateGameData = store.updateData.game
-    store.player = store.player === 'x' ? 'o' : 'x'
+    utility.switchPlayer()
     updateGameData.cell.index = $(e.target).data('cell-index')
     updateGameData.cell.value = store.player
-    store.game.cells[updateGameData.cell.index] = store.player
-    utility.checkGame(store.player)
+    utility.checkGame()
 
     api.ajaxUpdateGame()
-    .then(ui.onUpdateGameSuccess)
+    .then(store.computerMode ? ui.onPlayerUpdateSuccess : ui.onOnePlayerUpdateSuccess)
     .catch(ui.onError)
 }
 
@@ -40,7 +47,8 @@ const onResize = () => {
 }
 
 export {
-    onNewGame,
+    onNewPlayerGame,
+    onNewComputerGame,
     onSpaceClicked,
     onGetGames,
     onDeleteGame,

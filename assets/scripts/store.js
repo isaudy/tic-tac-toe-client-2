@@ -13,7 +13,8 @@ const store = {
           over: false
         }
   },
-  computerMode: true
+  computerMode: false,
+  isTie: false
 }
 
 module.exports = store

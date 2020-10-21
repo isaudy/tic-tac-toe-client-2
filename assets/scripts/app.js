@@ -6,7 +6,7 @@ const modals = require('./modals')
 $(() => {
   $('#other-auth-buttons').hide()
   $('#game-board').hide();
-  $('#new-game').hide()
+  $('#game-buttons').hide()
   $('.game-space').hide()
 
   // Buttons for modals
@@ -17,7 +17,8 @@ $(() => {
   $('#get-games').on('click', modals.gamesModal)
 
   // Game event handlers
-  $('#new-game').on('click', gameEvents.onNewGame)
+  $('#new-game').on('click', gameEvents.onNewPlayerGame)
+  $('#computer-game').on('click', gameEvents.onNewComputerGame)
 
   // Game board css
   
